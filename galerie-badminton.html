@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photos Badminton - Alexis Bouchaud</title>
+    <!-- Importation des polices Google Fonts pour les 4 nouveaux thèmes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bilbo&family=Charm&family=Edu+NSW+ACT+Foundation&family=Kaushan+Script&family=Modern+Antiqua&family=Petit+Formal+Script&family=Playfair+Display&family=Playpen+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Bouton Retour -->
+    <header style="padding: 20px 30px;">
+        <a href="index.html" style="color: var(--color-gold); text-decoration: none;">&larr; Retour au portfolio</a>
+    </header>
+
+    <main class="gallery-page">
+        <!-- 1. EN-TÊTE STYLE PIXIESET -->
+        <section class="gallery-hero">
+            <div class="hero-image-wrapper2">
+                <!-- Image principale de couverture -->
+                <img src="Photo_BAD/P1014522.jpg" alt="Couverture Badminton">
+            </div>
+            <div class="hero-details">
+                <p class="hero-date">Année 2026</p>
+                <h1>PHOTOS BADMINTON</h1>
+                <p class="hero-author">ALEXIS BOUCHAUD</p>
+            </div>
+        </section>
+
+        <!-- 2. GRILLE PHOTOS FLUIDE (STYLE PIXIESET) -->
+        <section class="pixieset-grid">
+            <!-- Ajoutez toutes vos photos ici en indiquant le dossier Photo_BSM/ -->
+            <img src="Photo_BAD/P1002016.jpg" alt="Photo" onclick="openLightbox(this)">
+            <img src="Photo_BAD/P1002109.jpg" alt="Photo" onclick="openLightbox(this)">
+            <img src="Photo_BAD/P1002162.jpg" alt="Photo" onclick="openLightbox(this)">
+            <img src="Photo_BAD/P1002244.jpg" alt="Photo" onclick="openLightbox(this)">
+            <img src="Photo_BAD/P1002391.jpg" alt="Photo" onclick="openLightbox(this)">
+            <img src="Photo_BAD/P1002501.jpg" alt="Photo" onclick="openLightbox(this)">
+            <img src="Photo_BAD/P1014484.jpg" alt="Photo" onclick="openLightbox(this)">
+            <img src="Photo_BAD/P1014485.jpg" alt="Photo" onclick="openLightbox(this)">
+            <img src="Photo_BAD/P1014522.jpg" alt="Photo" onclick="openLightbox(this)">
+            <img src="Photo_BAD/P1014567.jpg" alt="Photo" onclick="openLightbox(this)">
+            <img src="Photo_BAD/P1014587.jpg" alt="Photo" onclick="openLightbox(this)">
+            <img src="Photo_BAD/P1014588.jpg" alt="Photo" onclick="openLightbox(this)">
+            <img src="Photo_BAD/P1014598.jpg" alt="Photo" onclick="openLightbox(this)">
+            <img src="Photo_BAD/P1014611.jpg" alt="Photo" onclick="openLightbox(this)">
+            <img src="Photo_BAD/P1014625.jpg" alt="Photo" onclick="openLightbox(this)">
+            <img src="Photo_BAD/P1014626.jpg" alt="Photo" onclick="openLightbox(this)">
+
+        </section>
+    </main>
+
+    <!-- 3. VISIONNEUSE PLEIN ÉCRAN (LIGHTBOX) -->
+    <!-- J'ai ajouté (event) dans closeLightbox pour gérer le clic sur le fond -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+        <span class="close-btn">&times;</span>
+        
+        <!-- Nouvelles flèches de navigation -->
+        <span class="lightbox-nav left" onclick="changeImage(-1)">&#10094;</span>
+        <img id="lightbox-img" src="" alt="Photo agrandie">
+        <span class="lightbox-nav right" onclick="changeImage(1)">&#10095;</span>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        let imagesArray = [];
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        // Ouvre la lightbox
+        function openLightbox(element) {
+            // Récupère toutes les images de la grille pour savoir combien il y en a
+            imagesArray = Array.from(document.querySelectorAll('.pixieset-grid img'));
+            
+            // Trouve le numéro (l'index) de l'image cliquée
+            currentIndex = imagesArray.indexOf(element);
+            
+            updateImage();
+            lightbox.classList.add('active');
+        }
+
+        // Ferme la lightbox (uniquement si on clique sur le fond noir ou la croix)
+        function closeLightbox(event) {
+            if (!event || event.target.id === 'lightbox' || event.target.classList.contains('close-btn')) {
+                lightbox.classList.remove('active');
+            }
+        }
+
+        // Change l'image (direction = 1 pour suivant, -1 pour précédent)
+        function changeImage(direction) {
+            let newIndex = currentIndex + direction;
+            
+            // On vérifie si on ne dépasse pas le début (0) ou la fin de la liste d'images
+            if (newIndex >= 0 && newIndex < imagesArray.length) {
+                currentIndex = newIndex;
+                updateImage();
+            }
+            // Si on est aux limites, la fonction ne fait rien (pas de boucle)
+        }
+
+        // Met à jour la source de l'image
+        function updateImage() {
+            lightboxImg.src = imagesArray[currentIndex].src;
+        }
+
+        // --- Écoute du clavier (Flèches et Échap) ---
+        document.addEventListener('keydown', function(event) {
+            if (lightbox.classList.contains('active')) {
+                if (event.key === 'ArrowRight') {
+                    changeImage(1); // Suivant
+                } else if (event.key === 'ArrowLeft') {
+                    changeImage(-1); // Précédent
+                } else if (event.key === 'Escape') {
+                    closeLightbox(); // Fermer
+                }
+            }
+        });
+    </script>
+
+<script src="theme.js"></script>
+
+</body>
+<!-- CHANGEUR DE THÈME & LECTEUR AUDIO -->
+    <div id="theme-switcher">
+        <button class="theme-btn" onclick="changeTheme(-1)">&#10094;</button>
+        <img id="theme-icon" src="PNG_page_accueil/icon0.png" alt="Thème actuel" onclick="toggleAudio()">
+        <button class="theme-btn" onclick="changeTheme(1)">&#10095;</button>
+        
+        <!-- Les pistes audio -->
+        <audio id="audio-theme-0" src="musique/theme0.mp3" loop></audio>
+        <audio id="audio-theme-1" src="musique/theme1.mp3" loop></audio>
+        <audio id="audio-theme-2" src="musique/theme2.mp3" loop></audio>
+    </div>
+</html>

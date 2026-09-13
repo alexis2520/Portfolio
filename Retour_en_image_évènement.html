@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Retour en image évènement</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400&family=Tenor+Sans&display=swap" rel="stylesheet">
+    <!-- Importation des polices Google Fonts pour les 4 nouveaux thèmes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bilbo&family=Charm&family=Edu+NSW+ACT+Foundation&family=Kaushan+Script&family=Modern+Antiqua&family=Petit+Formal+Script&family=Playfair+Display&family=Playpen+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Petit en-tête pour revenir en arrière -->
+    <header style="padding: 20px; text-align: left;">
+        <a href="index.html" style="color: var(--color-gold); text-decoration: none;">&larr; Retour au portfolio</a>
+    </header>
+
+   <main class="project-page portrait-layout">
+        
+        <!-- Colonne de gauche : Le Texte -->
+        <div class="project-text">
+            <h1>Bazoges se marie</h1>
+            <p class="subtitle">28 août 2026</p>
+            
+            <div class="project-description">
+                <p>Présence en fin d’après-midi et durant toute la soirée pour le Comité des fêtes de Bazoges-en-Paillers.</p>
+                <p>Objectif : communiquer sur l’événement une fois celui-ci terminé.</p>
+                <p>Mon rôle était de filmer l’événement, puis de réaliser le montage afin de le publier ensuite sur les réseaux sociaux.</p>
+                <a href="galerie-bazoges-se-marie.html" class="switch-media-btn">
+                    📷 Voir la galerie photo
+                </a>
+            </div>
+        </div>
+
+        <!-- Colonne de droite : La Vidéo -->
+        <div class="project-media">
+            <!-- Notez la nouvelle classe "portrait-video" -->
+            <div class="video-wrapper portrait-video">
+                <iframe src="https://player.vimeo.com/video/1224378927?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            </div>
+        </div>
+
+    </main>
+
+<script src="theme.js"></script>    
+
+</body>
+<!-- CHANGEUR DE THÈME & LECTEUR AUDIO -->
+    <div id="theme-switcher">
+        <button class="theme-btn" onclick="changeTheme(-1)">&#10094;</button>
+        <img id="theme-icon" src="PNG_page_accueil/icon0.png" alt="Thème actuel" onclick="toggleAudio()">
+        <button class="theme-btn" onclick="changeTheme(1)">&#10095;</button>
+        
+        <!-- Les pistes audio -->
+        <audio id="audio-theme-0" src="musique/theme0.mp3" loop></audio>
+        <audio id="audio-theme-1" src="musique/theme1.mp3" loop></audio>
+        <audio id="audio-theme-2" src="musique/theme2.mp3" loop></audio>
+    </div>
+</html>

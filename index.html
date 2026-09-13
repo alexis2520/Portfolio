@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Vidéaste & Créateur Lumière</title>
+    
+    <!-- Importation des polices Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300;6..12,400&family=Tenor+Sans&display=swap" rel="stylesheet">
+    <!-- Importation des polices Google Fonts pour les 4 nouveaux thèmes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bilbo&family=Charm&family=Edu+NSW+ACT+Foundation&family=Kaushan+Script&family=Modern+Antiqua&family=Petit+Formal+Script&family=Playfair+Display&family=Playpen+Sans&display=swap" rel="stylesheet">
+    <!-- Lien vers notre fichier CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- CHANGEUR DE THÈME & LECTEUR AUDIO -->
+    <div id="theme-switcher">
+        <button class="theme-btn" onclick="changeTheme(-1)">&#10094;</button>
+        <!-- CORRECTION ICI : accueil au lieu de acceuil -->
+        <img id="theme-icon" src="PNG_page_acceuil/icon0.png" alt="Thème actuel" onclick="toggleAudio()">
+        <button class="theme-btn" onclick="changeTheme(1)">&#10095;</button>
+        
+        <!-- Les pistes audio -->
+        <audio id="audio-theme-0" src="musique/theme0.mp3" loop></audio>
+        <audio id="audio-theme-1" src="musique/theme1.mp3" loop></audio>
+        <audio id="audio-theme-2" src="musique/theme2.mp3" loop></audio>
+        <audio id="audio-theme-3" src="musique/theme3.mp3" loop></audio>
+        <audio id="audio-theme-4" src="musique/theme4.mp3" loop></audio>
+        <audio id="audio-theme-5" src="musique/theme5.mp3" loop></audio>
+        <audio id="audio-theme-6" src="musique/theme6.mp3" loop></audio>
+    </div>
+
+    <header>
+        <div class="header-content">
+            <!-- CORRECTION ICI : accueil au lieu de acceuil -->
+            <img src="PNG_page_acceuil/logo-base.png" alt="Alexis Bouchaud" class="header-logo">
+            <h2 class="subtitle">Vidéaste - Photographe - Artiste Visuel - Régisseur Lumière</h2>
+            <p class="bio">Étudiant de 19 ans, je suis en BTS technicien d'ingénierie et exploitation des équipements.
+Polyvalent et réactif, je m'adapte rapidement aux missions qui me sont confiées. Curieux d'apprendre, j'ai le goût du travail bien fait et j'apprécie le contact humain.</p>
+        </div>
+        
+        <nav>
+            <ul>
+                <li><a href="#video">Vidéo</a></li>
+                <li><a href="#photo">Photo</a></li>
+                <!-- CORRECTION ICI : art-visuel sans espace -->
+                <li><a href="#logiciel">Logiciels maîtrisés</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- SECTION VIDÉO -->
+        <section id="video">
+            <h2>Vidéo</h2>
+            <div class="portfolio-grid">
+                <!-- Carte Projet 1 -->
+                <a href="Retour_en_image_évènement.html" class="card-link">
+                    <div class="project-card">
+                        
+                        <div class="video-wrapper">
+                            <video class="ajustement-portrait" src="MON_EXTRAIT.mp4" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+                        </div>
+                        
+                        <div class="project-info">
+                            <h3>Retour en image évènement</h3>
+                            <p>Bazoges se marie 2026</p>
+                        </div>
+                        
+                    </div>
+                </a>
+                <!-- Carte Projet 2 -->
+                <a href="Bande_annonce_festival.html" class="card-link">
+                    <div class="project-card">
+                        
+                        <div class="video-wrapper">
+                            <video class="ajustement-portrait" src="MON_EXTRAIT2.mp4" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+                        </div>
+                        
+                        <div class="project-info">
+                            <h3>Bande annonce festival</h3>
+                            <p>Festival ciné/théatre 2025</p>
+                        </div>
+                        
+                    </div>
+                </a>
+                <!-- Carte Projet 3 -->
+                <a href="Découverte_du_collège.html" class="card-link">
+                    <div class="project-card">
+                        
+                        <div class="video-wrapper">
+                            <video class="ajustement-portrait" src="MON_EXTRAIT3.mp4" muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"></video>
+                        </div>
+                        
+                        <div class="project-info">
+                            <h3>Découverte du collège</h3>
+                            <p>Collège Sainte Marie Chavagnes en Paillers</p>
+                        </div>
+                        
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- SECTION PHOTO -->
+        <section id="photo">
+            <h2>Photographie</h2>
+            <div class="portfolio-grid">
+                
+                <a href="galerie-bazoges-se-marie.html" class="card-link">
+                    <div class="project-card">
+                        <div class="image-wrapper">
+                            <img src="Photo_BSM/P1027047.jpg" alt="Photo Bazoges se marie">
+                        </div>
+                        <div class="project-info">
+                            <h3>Bazoges se marie</h3>
+                            <p>28 Août 2026</p>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="galerie-badminton.html" class="card-link">
+                    <div class="project-card">
+                        <div class="image-wrapper">
+                            <img src="Photo_BAD/P1002391.jpg" alt="Photo Badminton">
+                        </div>
+                        <div class="project-info">
+                            <h3>Badminton en Haute-Loire</h3>
+                            <p>Année 2026</p>
+                        </div>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+        <!-- ================= SECTION LOGICIELS ================= -->
+        <section id="logiciel"></section>
+            <div class="section-title">
+                <h2>| Logiciels maîtrisés</h2>
+            </div>
+
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    
+                    <div class="carousel-logo">
+                        <img src="appli/premiere.png" alt="Premiere Pro">
+                        <span class="app-name">Premiere Pro</span>
+                    </div>
+                    
+                    <div class="carousel-logo">
+                        <img src="appli/aftereffect.png" alt="After Effects">
+                        <span class="app-name">After Effects</span>
+                    </div>
+                    
+                    <div class="carousel-logo">
+                        <img src="appli/affinity.png" alt="Affinity">
+                        <span class="app-name">Affinity</span>
+                    </div>
+                    
+                    <div class="carousel-logo">
+                        <img src="appli/touchdesigner.png" alt="TouchDesigner">
+                        <span class="app-name">TouchDesigner</span>
+                    </div>
+
+                    <div class="carousel-logo">
+                        <img src="appli/audacity.png" alt="Audacity">
+                        <span class="app-name">Audacity</span>
+                    </div>
+
+                    <div class="carousel-logo">
+                        <img src="appli/blender.png" alt="Blender">
+                        <span class="app-name">Blender</span>
+                    </div>
+
+                    <div class="carousel-logo">
+                        <img src="appli/canva.png" alt="Canva">
+                        <span class="app-name">Canva</span>
+                    </div>
+
+                    <div class="carousel-logo">
+                        <img src="appli/darktable.png" alt="Darktable">
+                        <span class="app-name">Darktable</span>
+                    </div>
+
+                    <div class="carousel-logo">
+                        <img src="appli/davinci.png" alt="Davinci resolve">
+                        <span class="app-name">Davinci Resolve</span>
+                    </div>
+
+                    <div class="carousel-logo">
+                        <img src="appli/flstudio.png" alt="FL studio">
+                        <span class="app-name">FL studio</span>
+                    </div>
+
+                    <div class="carousel-logo">
+                        <img src="appli/heavym.png" alt="Heavy M">
+                        <span class="app-name">Heavy M</span>
+                    </div>
+
+                    <div class="carousel-logo">
+                        <img src="appli/resolume.png" alt="Resolume arena">
+                        <span class="app-name">Resolume Arena</span>
+                    </div>
+
+                    <div class="carousel-logo">
+                        <img src="appli/vcv.png" alt="VCV rack">
+                        <span class="app-name">VCV Rack</span>
+                    </div>
+
+
+
+                    <div class="carousel-logo">
+                        <img src="appli/premiere.png" alt="Premiere Pro">
+                        <span class="app-name">Premiere Pro</span>
+                    </div>
+                    
+                    <div class="carousel-logo">
+                        <img src="appli/aftereffect.png" alt="After Effects">
+                        <span class="app-name">After Effects</span>
+                    </div>
+                    
+                    <div class="carousel-logo">
+                        <img src="appli/affinity.png" alt="Affinity">
+                        <span class="app-name">Affinity</span>
+                    </div>
+                    
+                    <div class="carousel-logo">
+                        <img src="appli/touchdesigner.png" alt="TouchDesigner">
+                        <span class="app-name">TouchDesigner</span>
+                    </div>
+
+                    <div class="carousel-logo">
+                        <img src="appli/audacity.png" alt="Audacity">
+                        <span class="app-name">Audacity</span>
+                    </div>
+
+                    <div class="carousel-logo">
+                        <img src="appli/blender.png" alt="Blender">
+                        <span class="app-name">Blender</span>
+                    </div>
+
+                    <div class="carousel-logo">
+                        <img src="appli/canva.png" alt="Canva">
+                        <span class="app-name">Canva</span>
+                    </div>
+
+                    <div class="carousel-logo">
+                        <img src="appli/darktable.png" alt="Darktable">
+                        <span class="app-name">Darktable</span>
+                    </div>
+
+                    <div class="carousel-logo">
+                        <img src="appli/davinci.png" alt="Davinci resolve">
+                        <span class="app-name">Davinci Resolve</span>
+                    </div>
+
+                    <div class="carousel-logo">
+                        <img src="appli/flstudio.png" alt="FL studio">
+                        <span class="app-name">FL studio</span>
+                    </div>
+
+                    <div class="carousel-logo">
+                        <img src="appli/heavym.png" alt="Heavy M">
+                        <span class="app-name">Heavy M</span>
+                    </div>
+
+                    <div class="carousel-logo">
+                        <img src="appli/resolume.png" alt="Resolume arena">
+                        <span class="app-name">Resolume Arena</span>
+                    </div>
+
+                    <div class="carousel-logo">
+                        <img src="appli/vcv.png" alt="VCV rack">
+                        <span class="app-name">VCV Rack</span>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer id="contact">
+        <h2>Me Contacter</h2>
+        <p>Email: alexis.bouchaud7@gmail.com</p>
+        <p>Numero de téléphone : 06 73 57 45 77</p>
+        <p>Instagram: alexis.bouchaud7</p>
+    </footer>
+
+<script src="theme.js"></script>    
+
+</body>
+</html>

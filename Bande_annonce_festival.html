@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Bande annonce festival</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400&family=Tenor+Sans&display=swap" rel="stylesheet">
+    <!-- Importation des polices Google Fonts pour les 4 nouveaux thèmes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bilbo&family=Charm&family=Edu+NSW+ACT+Foundation&family=Kaushan+Script&family=Modern+Antiqua&family=Petit+Formal+Script&family=Playfair+Display&family=Playpen+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Petit en-tête pour revenir en arrière -->
+    <header style="padding: 20px; text-align: left;">
+        <a href="index.html" style="color: var(--color-gold); text-decoration: none;">&larr; Retour au portfolio</a>
+    </header>
+
+    <main class="project-page">
+        <h1>Bande annonce</h1>
+        <p class="subtitle">Festival ciné/théatre 2025</p>
+        
+        <!-- La vraie vidéo Vimeo complète -->
+        <div class="video-wrapper big-video">
+            <iframe src="https://player.vimeo.com/video/1224391317?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+        </div>
+
+        <!-- Votre texte explicatif -->
+        <div class="project-description">
+            <h2>Description :</h2>
+            <p>Au lycée Charles Péguy, à Gorges, se préparait la troisième édition du festival ciné/théâtre, lors duquel les élèves pouvaient présenter un court-métrage et/ou une pièce de théâtre sur un thème imposé.</p>
+            <p>Étudiant au lycée et après avoir découvert le festival Premiers Plans à Angers, j’ai décidé de créer une bande-annonce dynamique, inspirée de l’identité et du style de ce festival.</p>
+            <p>Nous étions deux sur le projet : je me suis occupé du montage, tandis que l’autre personne s’est chargée de la musique.</p>
+            <p>Nous avons discuté du choix musical et sommes tombés d’accord sur une musique dynamique et épique, avec une certaine part de mystère, afin d’accrocher le spectateur et d’éveiller sa curiosité.</p>
+            <p>Pour le montage, j’ai repris les scènes les plus marquantes des courts-métrages des années précédentes afin de montrer que le maître mot du festival était la créativité. J’ai ensuite construit le montage en suivant le rythme de la musique, en ne laissant pas les plans trop longtemps à l’écran afin de dynamiser la vidéo.</p>
+            <p>Je tenais également à ne pas réaliser une simple succession de plans. J’ai donc ajouté plusieurs effets, notamment du picture-in-picture et du split-screen, afin de maintenir l’attention du spectateur et d’apporter davantage de rythme au montage.</p>
+            <p>La vidéo se termine par un défilement des titres des anciens courts-métrages, en référence aux élèves ayant déjà participé au festival.</p>
+        </div>
+    </main>
+
+<script src="theme.js"></script>
+
+</body>
+<!-- CHANGEUR DE THÈME & LECTEUR AUDIO -->
+    <div id="theme-switcher">
+        <button class="theme-btn" onclick="changeTheme(-1)">&#10094;</button>
+        <img id="theme-icon" src="PNG_page_accueil/icon0.png" alt="Thème actuel" onclick="toggleAudio()">
+        <button class="theme-btn" onclick="changeTheme(1)">&#10095;</button>
+        
+        <!-- Les pistes audio -->
+        <audio id="audio-theme-0" src="musique/theme0.mp3" loop></audio>
+        <audio id="audio-theme-1" src="musique/theme1.mp3" loop></audio>
+        <audio id="audio-theme-2" src="musique/theme2.mp3" loop></audio>
+    </div>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Découverte du collège</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400&family=Tenor+Sans&display=swap" rel="stylesheet">
+    <!-- Importation des polices Google Fonts pour les 4 nouveaux thèmes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bilbo&family=Charm&family=Edu+NSW+ACT+Foundation&family=Kaushan+Script&family=Modern+Antiqua&family=Petit+Formal+Script&family=Playfair+Display&family=Playpen+Sans&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Petit en-tête pour revenir en arrière -->
+    <header style="padding: 20px; text-align: left;">
+        <a href="index.html" style="color: var(--color-gold); text-decoration: none;">&larr; Retour au portfolio</a>
+    </header>
+
+    <main class="project-page">
+        <h1>VIDÉO COLLÈGE SAINTE MARIE CHAVAGNES EN PAILLERS</h1>
+        
+        <!-- Le sous-titre qui changera automatiquement -->
+        <p class="subtitle" id="video-subtitle">Prép'avenir</p>
+
+        <!-- Conteneur avec les flèches et le lecteur -->
+        <div class="video-carousel">
+            <button class="arrow-btn left" onclick="changeVideo(-1)" aria-label="Vidéo précédente">&#10094;</button>
+
+            <div class="video-wrapper big-video">
+                <iframe id="carousel-iframe" src="https://player.vimeo.com/video/1224417203?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+            </div>
+
+            <button class="arrow-btn right" onclick="changeVideo(1)" aria-label="Vidéo suivante">&#10095;</button>
+        </div>
+
+        <div class="project-description">
+            <h2>Description :</h2>
+            <p>C’est un projet réalisé avec la volonté de m’exercer tout en faisant la promotion du collège dans lequel j’avais étudié.</p>
+            <p>Après un entretien avec la directrice, celle-ci m’a proposé de réaliser non pas une, mais trois vidéos différentes, chacune présentant un des services proposés par l’établissement.</p>
+            <p>Étant donné que j’y avais fait mes études, je connaissais déjà le bâtiment. Le véritable défi était donc de réussir à bien le mettre en valeur et à donner envie aux futurs collégiens de venir dans cet établissement.</p>
+        </div>
+    </main>
+
+    <!-- Script pour la logique du carrousel -->
+    <script>
+        // 1. Définissez ici vos 3 vidéos et leurs sous-titres
+        const playlist = [
+            {
+                url: "https://player.vimeo.com/video/1224417203?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
+                subtitle: "Prép'avenir"
+            },
+            {
+                url: "https://player.vimeo.com/video/1224417202?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" , // Remplacez par votre 2ème vidéo Vimeo
+                subtitle: "Cantine"                   // Remplacez par votre 2ème sous-titre
+            },
+            {
+                url: "https://player.vimeo.com/video/1224417201?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" , // Remplacez par votre 3ème vidéo Vimeo
+                subtitle: "Ateliers de Marie"                  // Remplacez par votre 3ème sous-titre
+            }
+        ];
+
+        let currentIndex = 0;
+
+        function changeVideo(direction) {
+            // Calcul de l'index avec boucle infinie
+            currentIndex = (currentIndex + direction + playlist.length) % playlist.length;
+
+            // Mise à jour de la vidéo et du sous-titre
+            document.getElementById('carousel-iframe').src = playlist[currentIndex].url;
+            document.getElementById('video-subtitle').textContent = playlist[currentIndex].subtitle;
+        }
+    </script>
+
+<script src="theme.js"></script>
+
+</body>
+<!-- CHANGEUR DE THÈME & LECTEUR AUDIO -->
+    <div id="theme-switcher">
+        <button class="theme-btn" onclick="changeTheme(-1)">&#10094;</button>
+        <img id="theme-icon" src="PNG_page_accueil/icon0.png" alt="Thème actuel" onclick="toggleAudio()">
+        <button class="theme-btn" onclick="changeTheme(1)">&#10095;</button>
+        
+        <!-- Les pistes audio -->
+        <audio id="audio-theme-0" src="musique/theme0.mp3" loop></audio>
+        <audio id="audio-theme-1" src="musique/theme1.mp3" loop></audio>
+        <audio id="audio-theme-2" src="musique/theme2.mp3" loop></audio>
+    </div>
+</html>
