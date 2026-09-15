@@ -61,26 +61,34 @@ function changeTheme(direction) {
 function applyTheme(themeIndex, playMusic) {
     const body = document.body;
     const themeIcon = document.getElementById('theme-icon');
-    const headerLogo = document.getElementById('header-logo'); // Récupération du logo principal
+    const headerLogo = document.getElementById('header-logo');
     const muteBtn = document.getElementById('mute-btn');
 
-    // 1. Changer la classe CSS du body
-    for (let i = 0; i < totalThemes; i++) {
-        body.classList.remove(`theme-${i}`);
-    }
-    body.classList.add(`theme-${themeIndex}`);
+    // 1. Déclencher la disparition progressive de l'image actuelle
+    if (headerLogo) headerLogo.classList.add('fade-out');
+    if (themeIcon) themeIcon.classList.add('fade-out');
 
-    // 2. Changer l'icône du sélecteur
-    if (themeIcon) {
-        themeIcon.src = `PNG_page_acceuil/icon${themeIndex}.png`;
-    }
+    // 2. Attendre la fin du fondu (200 ms) pour permuter les sources et réafficher
+    setTimeout(() => {
+        // Changer la classe CSS du body
+        for (let i = 0; i < totalThemes; i++) {
+            body.classList.remove(`theme-${i}`);
+        }
+        body.classList.add(`theme-${themeIndex}`);
 
-    // 3. Changer le logo "Alexis BOUCHAUD" principal
-    if (headerLogo && themeLogos[themeIndex]) {
-        headerLogo.src = `PNG_page_acceuil/${themeLogos[themeIndex]}`;
-    }
+        // Charger les nouvelles images et rétablir l'opacité
+        if (themeIcon) {
+            themeIcon.src = `PNG_page_acceuil/icon${themeIndex}.png`;
+            themeIcon.classList.remove('fade-out');
+        }
 
-    // 4. Gérer la musique : couper toutes les pistes
+        if (headerLogo && themeLogos[themeIndex]) {
+            headerLogo.src = `PNG_page_acceuil/${themeLogos[themeIndex]}`;
+            headerLogo.classList.remove('fade-out');
+        }
+    }, 200);
+
+    // 3. Gérer la musique
     for (let i = 0; i < totalThemes; i++) {
         let audio = document.getElementById(`audio-theme-${i}`);
         if (audio) {
@@ -89,7 +97,6 @@ function applyTheme(themeIndex, playMusic) {
         }
     }
 
-    // On lance la musique du thème choisi
     if (playMusic) {
         let currentAudio = document.getElementById(`audio-theme-${themeIndex}`);
         if (currentAudio) {
