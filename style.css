@@ -62,7 +62,7 @@ body.theme-1 {
 }
 body.theme-1 h1, body.theme-1 h2, body.theme-1 h3, body.theme-1 nav a {
     font-family: 'Comic Relief', system-ui;
-    color: #e5b078;
+    color: #f52789;
 }
 
 /* --- THEME 2 : DREAMY / RÊVE --- */
@@ -74,7 +74,7 @@ body.theme-2 {
 }
 body.theme-2 h1, body.theme-2 h2, body.theme-2 h3, body.theme-2 nav a {
     font-family: 'Caacupe One', sans-serif;
-    color: #d1c4e9;
+    color: #994fca;
 }
 
 /* --- THEME 3 : EPIC --- */
@@ -98,7 +98,7 @@ body.theme-4 {
 }
 body.theme-4 h1, body.theme-4 h2, body.theme-4 h3, body.theme-4 nav a {
     font-family: 'Edu NSW ACT Foundation', cursive;
-    color: #e99d4f; 
+    color: #e66f51; 
 }
 
 /* --- THEME 5 : CLASSIC --- */
@@ -155,13 +155,14 @@ body.theme-6 nav a { font-size: 1.6rem; }
 
 /* --- EN-TÊTE --- */
 header {
-    padding: 60px 20px 20px 20px;
+    padding: 0px 20px 20px 20px;
     border-bottom: 1px solid var(--color-dark-brown);
 }
 
+/* Conteneur principal de l'en-tête */
 .header-content {
-    max-width: 1200px;
-    margin: 0 auto;
+    text-align: center; /* Centre le texte (le sous-titre) */
+    /* Gardez vos autres propriétés s'il y en a */
 }
 
 h1 {
@@ -178,11 +179,12 @@ h1 {
 }
 
 .bio {
-    max-width: 600px;
+    max-width: 800px; /* On peut l'élargir un peu si vous voulez que ça prenne plus de place */
+    margin: 0 auto 40px auto; /* C'est LA ligne magique : "auto" à gauche et à droite centre le bloc ! */
+    text-align: center; /* Centre le texte à l'intérieur du bloc */
     color: inherit;
-    opacity: 0.8; /* Rend le texte de la bio légèrement transparent selon la couleur du thème */
+    opacity: 0.8;
     font-size: 1rem;
-    margin-bottom: 40px;
 }
 
 /* --- VISUEL D'EN-TÊTE (LOGO) --- */
@@ -213,7 +215,7 @@ nav ul {
 
 nav a {
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 2.1rem !important;
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: color 0.3s ease, border-bottom 0.3s ease;
@@ -745,4 +747,61 @@ footer p {
         /* On recule de la moitié exacte de la largeur (la première tournée) */
         transform: translateX(-50%);
     }
+}
+
+/* --- SECTION FOOTER / CONTACT & CV --- */
+#contact {
+    padding: 60px 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-top: 1px solid var(--color-dark-brown);
+}
+
+.footer-layout {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    gap: 50px;
+    align-items: center; /* Aligne le contenu verticalement au centre */
+    justify-content: space-between;
+}
+
+.contact-box, .cv-box {
+    flex: 1;
+}
+
+.contact-box h2, .cv-box h2 {
+    color: var(--color-gold);
+    margin-bottom: 20px;
+    border-left: none;
+    padding-left: 0;
+}
+
+.contact-box p, .cv-box p {
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.contact-box a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-box a:hover {
+    color: var(--color-gold);
+}
+
+/* Adaptation mobile */
+@media (max-width: 768px) {
+    .footer-layout {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+}
+
+#mute-btn {
+    font-size: 1rem;
+    padding: 0 5px;
+    cursor: pointer;
 }

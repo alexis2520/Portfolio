@@ -24,6 +24,8 @@
         <!-- CORRECTION ICI : accueil au lieu de acceuil -->
         <img id="theme-icon" src="PNG_page_acceuil/icon0.png" alt="Thème actuel" onclick="toggleAudio()">
         <button class="theme-btn" onclick="changeTheme(1)">&#10095;</button>
+
+        <button id="mute-btn" class="theme-btn" onclick="toggleAudio()">🔊</button>
         
         <!-- Les pistes audio -->
         <audio id="audio-theme-0" src="musique/theme0.mp3" loop></audio>
@@ -38,10 +40,7 @@
     <header>
         <div class="header-content">
             <!-- CORRECTION ICI : accueil au lieu de acceuil -->
-            <img src="PNG_page_acceuil/logo-base.png" alt="Alexis Bouchaud" class="header-logo">
-            <h2 class="subtitle">Vidéaste - Photographe - Artiste Visuel - Régisseur Lumière</h2>
-            <p class="bio">Étudiant de 19 ans, je suis en BTS technicien d'ingénierie et exploitation des équipements.
-Polyvalent et réactif, je m'adapte rapidement aux missions qui me sont confiées. Curieux d'apprendre, j'ai le goût du travail bien fait et j'apprécie le contact humain.</p>
+            <img id="header-logo" src="PNG_page_acceuil/logo-jazz.png" alt="Alexis Bouchaud" class="header-logo">
         </div>
         
         <nav>
@@ -288,11 +287,28 @@ Polyvalent et réactif, je m'adapte rapidement aux missions qui me sont confiée
 
     </main>
 
+    <!-- ================= SECTION CONTACT & CV ================= -->
     <footer id="contact">
-        <h2>Me Contacter</h2>
-        <p>Email: alexis.bouchaud7@gmail.com</p>
-        <p>Numero de téléphone : 06 73 57 45 77</p>
-        <p>Instagram: alexis.bouchaud7</p>
+        <div class="footer-layout">
+            
+            <!-- Colonne Gauche : Contact -->
+            <div class="contact-box">
+                <h2>Me Contacter</h2>
+                <p><strong>Email :</strong> <a href="mailto:alexis.bouchaud7@gmail.com">alexis.bouchaud7@gmail.com</a></p>
+                <p><strong>Téléphone :</strong> <a href="tel:0673574577">06 73 57 45 77</a></p>
+                <p><strong>Instagram :</strong> <a href="https://instagram.com/alexis.bouchaud7" target="_blank">@alexis.bouchaud7</a></p>
+            </div>
+
+            <!-- Colonne Droite : Bouton CV -->
+            <div class="cv-box">
+                <h2>Mon CV</h2>
+                <p>Téléchargez mon parcours au format PDF :</p>
+                <a href="cv.pdf" download class="switch-media-btn">
+                    📄 Télécharger mon CV
+                </a>
+            </div>
+
+        </div>
     </footer>
 
 <script src="theme.js"></script>    
