@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Découverte du collège</title>
+<meta name="description" content="Trois vidéos de présentation du collège Sainte Marie de Chavagnes-en-Paillers">
+<script>try{document.documentElement.dataset.theme=parseInt(localStorage.getItem('currentTheme'))||0}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=DM+Sans:wght@400;700&family=Monoton&family=Space+Grotesk:wght@400;700&family=Comfortaa:wght@500;700&family=Nunito:wght@400;700&family=Cinzel+Decorative:wght@700&family=Cormorant+Garamond:wght@500;600&family=Fredoka:wght@400;600&family=Playfair+Display:ital,wght@1,600&family=Lora:wght@400;600&family=Anton&family=Barlow:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar"><a class="back" href="index.html">&larr; Portfolio</a></header>
+<main class="project">
+<h1>Collège Sainte Marie, Chavagnes-en-Paillers</h1><p class="sub" id="sub" aria-live="polite">Prép'avenir</p>
+<div class="carousel">
+<button class="arrow" onclick="go(-1)" aria-label="Vidéo précédente">&#10094;</button>
+<div class="player-box"><iframe id="frame" src="https://player.vimeo.com/video/1224417203?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" title="Vidéo du collège" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe></div>
+<button class="arrow" onclick="go(1)" aria-label="Vidéo suivante">&#10095;</button>
+</div>
+<div class="desc"><h2>Description</h2>
+<p>C’est un projet réalisé avec la volonté de m’exercer tout en faisant la promotion du collège dans lequel j’avais étudié.</p>
+<p>Après un entretien avec la directrice, celle-ci m’a proposé de réaliser non pas une, mais trois vidéos différentes, chacune présentant un des services proposés par l’établissement.</p>
+<p>Étant donné que j’y avais fait mes études, je connaissais déjà le bâtiment. Le véritable défi était donc de réussir à bien le mettre en valeur et à donner envie aux futurs collégiens de venir dans cet établissement.</p></div>
+<nav class="next" aria-label="Autres projets"><a class="btn" href="bande-annonce-festival.html">&larr; Bande annonce festival</a><a class="btn" href="index.html#photo">Voir les photos &rarr;</a></nav>
+</main>
+<script>
+const L=[["https://player.vimeo.com/video/1224417203?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479","Prép'avenir"],["https://player.vimeo.com/video/1224417202?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479","Cantine"],["https://player.vimeo.com/video/1224417201?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479","Ateliers de Marie"]];let k=0;
+function go(d){k=(k+d+L.length)%L.length;document.getElementById('frame').src=L[k][0];document.getElementById('sub').textContent=L[k][1]}
+</script>
+<script src="theme.js" defer></script>
+</body>
+</html>
