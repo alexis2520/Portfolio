@@ -155,9 +155,9 @@
   function fx() {
     const cv = document.createElement('canvas'); cv.id = 'fx'; document.body.prepend(cv);
     if (reduce) return;
-    const c = cv.getContext('2d'); let W, H, P = [], m = { x: -999, y: -999 }, t = 0;
+    const c = cv.getContext('2d'); let W, H, S = 1, P = [], m = { x: -999, y: -999 }, t = 0;
     const R = (a, b) => (b === undefined ? Math.random() * a : a + Math.random() * (b - a));
-    const rs = () => { W = cv.width = innerWidth; H = cv.height = innerHeight; }; rs(); addEventListener('resize', rs);
+    const rs = () => { W = cv.width = innerWidth; H = cv.height = innerHeight; S = W < 700 ? .65 : 1; }; rs(); addEventListener('resize', rs);
     const dot = (p, col) => { c.fillStyle = col; c.beginPath(); c.arc(p.x, p.y, p.r, 0, 7); c.fill(); };
     const K = [
       { n: 30, mk: () => ({ x: R(W), y: R(H), r: R(10, 50), vx: R(-.2, .2), vy: R(-.35, -.05), h: R(20, 45), a: R(.06, .2) }),   // café : bokeh chaud
@@ -175,11 +175,11 @@
       { n: 55, mk: () => ({ x: R(W), y: H + R(40), r: R(1, 3.5), vx: R(-.3, .3), vy: R(-1.8, -.5), h: R(12, 42) }),                     // épique : braises
         dr: p => dot(p, `hsla(${p.h},100%,55%,${.55 + .4 * Math.sin(t / 5 + p.x)})`) },
       { n: 16, mk: () => ({ x: R(W), y: H + R(60), r: R(30, 52), vx: 0, vy: R(-.9, -.35), ph: R(6), g: ['🎈', '⭐', '🌈', '🦋', '🌻', '☁️', '🎨'][Math.floor(R(7))] }),   // enfance : ballons, étoiles, papillons
-        dr: p => { p.x += Math.sin(t / 45 + p.ph) * .7; c.font = `${p.r}px serif`; c.globalAlpha = .85; c.fillText(p.g, p.x, p.y); c.globalAlpha = 1; } },
+        dr: p => { p.x += Math.sin(t / 45 + p.ph) * .7; c.font = `${p.r * S}px serif`; c.globalAlpha = .85; c.fillText(p.g, p.x, p.y); c.globalAlpha = 1; } },
       { n: 26, mk: () => ({ x: R(W), y: H + R(60), r: R(14, 34), vx: 0, vy: R(-.7, -.3), ph: R(6), g: '♪♫♬♩'[Math.floor(R(4))], a: R(.15, .35) }), // classique : notes
-        dr: p => { p.x += Math.sin(t / 40 + p.ph) * .5; c.font = `${p.r}px serif`; c.fillStyle = `rgba(240,225,190,${p.a})`; c.fillText(p.g, p.x, p.y); } },
+        dr: p => { p.x += Math.sin(t / 40 + p.ph) * .5; c.font = `${p.r * S}px serif`; c.fillStyle = `rgba(240,225,190,${p.a})`; c.fillText(p.g, p.x, p.y); } },
       { n: 9, mk: () => ({ x: R(W), y: R(H * .6), r: R(34, 54), vx: R(1, 2.6) * (R(1) > .5 ? 1 : -1), vy: R(-2, 2), g: ['⚽', '🏀', '🎾', '🏸', '🏐', '🏉', '🏓'][Math.floor(R(7))] }),   // sport : balles qui rebondissent
-        dr: p => { p.vy += .28; if (p.y > H - 10) { p.y = H - 10; p.vy *= -.84; } c.font = `${p.r}px serif`; c.fillText(p.g, p.x, p.y); } }
+        dr: p => { p.vy += .28; if (p.y > H - 10) { p.y = H - 10; p.vy *= -.84; } c.font = `${p.r * S}px serif`; c.fillText(p.g, p.x, p.y); } }
     ];
     addEventListener('mousemove', e => { m.x = e.clientX; m.y = e.clientY; }, { passive: true });
     addEventListener('click', e => {
@@ -188,7 +188,7 @@
     (function loop() {
       t++; c.clearRect(0, 0, W, H); const k = K[theme];
       if (P.th !== theme) { P = []; P.th = theme; }
-      k.pre && k.pre(); while (P.filter(p => p.life === undefined).length < k.n) P.push(k.mk());
+      const N = Math.ceil(k.n * (S < 1 ? .6 : 1)); k.pre && k.pre(); while (P.filter(p => p.life === undefined).length < N) P.push(k.mk());
       for (let i = P.length - 1; i >= 0; i--) {
         const p = P[i]; p.x += p.vx; p.y += p.vy;
         const dx = p.x - m.x, dy = p.y - m.y, d = Math.hypot(dx, dy);
@@ -207,7 +207,7 @@
     const tc = document.getElementById('tc');
     if (tc) setInterval(() => { const f = Math.floor(performance.now() / 40), p = n => String(n).padStart(2, '0');
       tc.textContent = `${p(Math.floor(f / 90000) % 100)}:${p(Math.floor(f / 1500) % 60)}:${p(Math.floor(f / 25) % 60)}:${p(f % 25)}`; }, 40);
-    if (reduce) return;
+    if (reduce || !matchMedia('(hover: hover)').matches) return;
     const logo = document.getElementById('header-logo');
     if (logo) addEventListener('mousemove', e => { const x = e.clientX / innerWidth - .5, y = e.clientY / innerHeight - .5;
       logo.style.transform = `translate(${x * -22}px,${y * -14}px)`; }, { passive: true });
