@@ -13,7 +13,7 @@
   /* ---------- Musique : un seul <audio>, chargé à la demande, avec fondu ---------- */
   const audio = new Audio(); audio.loop = true; audio.preload = 'none';
   let fadeTimer, muted = false;
-  const GAME_URL = '';   // ← easter egg : adresse du jeu une fois en ligne (ex. 'https://mon-jeu.onrender.com')
+  const GAME_URL = 'https://loup-touche-touche.onrender.com';   // ← easter egg : adresse du jeu une fois en ligne (ex. 'https://mon-jeu.onrender.com')
   function fade(to, done) {
     clearInterval(fadeTimer);
     fadeTimer = setInterval(() => {
