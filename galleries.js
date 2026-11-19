@@ -959,7 +959,7 @@ window.GALLERIES = [
   "date": "21 octobre 2026",
   "cat": "Événements",
   "folder": "Photo_puy-du-fou",
-  "cover": "P1095946",
+  "cover": "P1095808",
   "photos": [
    [
     "P1095753",
@@ -1001,6 +1001,16 @@ window.GALLERIES = [
     676,
     900
    ]
+  ],
+  "tpos": [
+   50,
+   42.3727912810697,
+   1
+  ],
+  "cpos": [
+   50,
+   53.14279041211228,
+   1
   ]
  }
 ];
