@@ -149,7 +149,7 @@ window.GALLERIES = [
   "date": "19 septembre 2026",
   "cat": "Événements",
   "folder": "Photo_LAP",
-  "cover": "P1094267",
+  "cover": "P1082960",
   "photos": [
    [
     "P1082960",
@@ -261,6 +261,17 @@ window.GALLERIES = [
     900,
     676
    ]
+  ],
+  "thumb": "P1082963",
+  "tpos": [
+   50,
+   38.745508950777136,
+   1
+  ],
+  "cpos": [
+   50,
+   58.159094368822686,
+   1
   ]
  },
  {
@@ -269,7 +280,7 @@ window.GALLERIES = [
   "date": "Année 2026",
   "cat": "Événements",
   "folder": "Photo_OIS",
-  "cover": "P1094466",
+  "cover": "P1094427_01",
   "photos": [
    [
     "P1094314",
@@ -451,6 +462,17 @@ window.GALLERIES = [
     676,
     900
    ]
+  ],
+  "thumb": "P1094387_01",
+  "tpos": [
+   50,
+   25,
+   1
+  ],
+  "cpos": [
+   50,
+   21.989500380097226,
+   1
   ]
  },
  {
@@ -459,7 +481,7 @@ window.GALLERIES = [
   "date": "Année 2026",
   "cat": "Sport",
   "folder": "Photo_BAD",
-  "cover": "P1014611",
+  "cover": "P1002391",
   "photos": [
    [
     "P1002016",
@@ -541,6 +563,17 @@ window.GALLERIES = [
     676,
     900
    ]
+  ],
+  "thumb": "P1014588",
+  "tpos": [
+   50,
+   25,
+   1
+  ],
+  "cpos": [
+   50,
+   38.09370850412279,
+   1
   ]
  },
  {
@@ -549,7 +582,7 @@ window.GALLERIES = [
   "date": "4 octobre 2026",
   "cat": "Sport",
   "folder": "Photo_BRI",
-  "cover": "P1095227",
+  "cover": "P1095134",
   "photos": [
    [
     "P1095131",
@@ -841,6 +874,17 @@ window.GALLERIES = [
     676,
     900
    ]
+  ],
+  "thumb": "P1095142",
+  "tpos": [
+   50,
+   40.65459993123559,
+   1
+  ],
+  "cpos": [
+   50,
+   32.69845011491543,
+   1
   ]
  },
  {
@@ -901,6 +945,12 @@ window.GALLERIES = [
     900,
     900
    ]
+  ],
+  "thumb": "P1097619",
+  "tpos": [
+   50,
+   47.959653572116736,
+   1
   ]
  }
 ];
