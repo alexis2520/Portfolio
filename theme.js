@@ -13,7 +13,7 @@
   /* ---------- Musique : un seul <audio>, chargé à la demande, avec fondu ---------- */
   const audio = new Audio(); audio.loop = true; audio.preload = 'none';
   let fadeTimer, muted = false;
-  const GAME_URL = 'https://loup-touche-touche.onrender.com';   // ← easter egg : adresse du jeu une fois en ligne (ex. 'https://mon-jeu.onrender.com')
+  const GAME_URL = '';   // ← easter egg : adresse du jeu une fois en ligne (ex. 'https://mon-jeu.onrender.com')
   function fade(to, done) {
     clearInterval(fadeTimer);
     fadeTimer = setInterval(() => {
@@ -236,9 +236,38 @@
     });
   }
 
+  addEventListener('keydown', e => { if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'a') { e.preventDefault(); location.href = 'admin.html'; } });
+
+
+  /* ---------- Vidéos Vimeo / YouTube : le son du site se coupe pendant la lecture, puis revient ---------- */
+  function watchVideos() {
+    let resume = false; const active = new Set();
+    const start = k => { if (active.has(k)) return; active.add(k); if (active.size === 1) { resume = !audio.paused && !muted; if (resume) pause(false); } };
+    const stop = k => { if (!active.delete(k)) return; if (!active.size && resume) { resume = false; play(); } };
+    const post = (f, o) => { try { f.contentWindow.postMessage(JSON.stringify(o), '*'); } catch (e) {} };
+    const hook = f => {
+      const s = f.src || '';
+      if (/vimeo/.test(s)) ['play', 'pause', 'finish'].forEach(e => post(f, { method: 'addEventListener', value: e }));
+      else if (/youtube/.test(s)) { post(f, { event: 'listening', id: 1, channel: 'widget' }); post(f, { event: 'command', func: 'addEventListener', args: ['onStateChange'], id: 1, channel: 'widget' }); }
+    };
+    document.querySelectorAll('iframe').forEach(f => { f.addEventListener('load', () => hook(f)); hook(f); });
+    addEventListener('message', e => {
+      if (!/vimeo|youtube/.test(e.origin)) return;
+      let d = e.data; try { if (typeof d === 'string') d = JSON.parse(d); } catch (x) { return; }
+      const f = [...document.querySelectorAll('iframe')].find(i => i.contentWindow === e.source); if (!f || !d) return;
+      if (d.event === 'ready') hook(f);
+      if (d.event === 'play') start(f);
+      if (d.event === 'pause' || d.event === 'finish') stop(f);
+      const st = d.event === 'onStateChange' ? d.info : d.event === 'infoDelivery' && d.info ? d.info.playerState : undefined;
+      if (st === 1) start(f); else if (st === 2 || st === 0) stop(f);
+    });
+    document.addEventListener('play', e => { if (e.target.tagName === 'VIDEO' && !e.target.muted) start(e.target); }, true);
+    ['pause', 'ended'].forEach(ev => document.addEventListener(ev, e => { if (e.target.tagName === 'VIDEO') stop(e.target); }, true));
+  }
+
   /* ---------- Démarrage ---------- */
   document.addEventListener('DOMContentLoaded', () => {
-    buildPlayer(); fx(); life(); egg(); apply(theme, false); marquee(); lightbox(); previews(); spy();
+    buildPlayer(); fx(); life(); egg(); watchVideos(); apply(theme, false); marquee(); lightbox(); previews(); spy();
     // reprise automatique si l'utilisateur écoutait déjà sur la page précédente
     let saved; try { saved = JSON.parse(store.get('musicTime')); } catch (e) {}
     if (wantsMusic) play(saved && saved.th === theme ? saved.t : 0);

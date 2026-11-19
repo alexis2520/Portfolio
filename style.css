@@ -201,3 +201,18 @@ html{-webkit-text-size-adjust:100%;-webkit-tap-highlight-color:transparent}
   #player{padding:4px 6px}#player button{width:40px;height:40px}#player .ic{width:54px;height:54px}#player .ic img{width:48px;height:48px}
 }
 @media(max-height:480px) and (orientation:landscape){.hero img{max-height:52svh}.hero{padding-bottom:70px}.tagline{margin:2px 0 8px}.down{bottom:10px}}
+
+/* ===== Filtres de catégories ===== */
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:-6px 0 22px}
+.chip{font:700 .9rem system-ui,sans-serif;padding:9px 20px;border-radius:30px;border:2px solid var(--accent);background:none;color:var(--accent);cursor:pointer;transition:background .25s,color .25s}
+.chip:hover,.chip.on{background:var(--accent);color:#111}
+
+.thumb{position:relative}
+.play{position:absolute;right:12px;bottom:12px;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:rgba(0,0,0,.55);color:#fff;font-size:.9rem;padding-left:3px;pointer-events:none;backdrop-filter:blur(4px)}
+
+/* ===== Placement des images (vignette / grande image) ===== */
+.thumb img{object-position:var(--ox,50%) var(--oy,25%);transform:scale(var(--z,1));transform-origin:var(--ox,50%) var(--oy,25%)}
+.card:hover .thumb img{transform:scale(calc(var(--z,1)*1.06))}
+.cbox{overflow:hidden;margin-bottom:26px}
+.g-hero .cover{margin:0;object-position:var(--ox,50%) var(--oy,40%);transform:scale(var(--z,1));transform-origin:var(--ox,50%) var(--oy,40%)}
+@media(hover:none){.card:hover .thumb img{transform:scale(var(--z,1))}}

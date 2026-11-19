@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Admin - Portfolio</title>
+<style>
+:root{--bg:#2a1810;--ink:#e6d9d3;--ac:#dfb95c;--pan:color-mix(in srgb,var(--bg) 70%,#000);--bd:color-mix(in srgb,var(--ac) 35%,transparent)}
+*{box-sizing:border-box;margin:0}
+body{font-family:system-ui,sans-serif;color:var(--ink);line-height:1.5;padding:20px 16px 120px;min-height:100vh;background:radial-gradient(at 15% 0,color-mix(in srgb,var(--ac) 20%,transparent),transparent 55%),var(--bg)}
+.w{max-width:820px;margin:0 auto}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+h1{font-size:1.6rem}.top a{color:var(--ac);font-size:.9rem}textarea{resize:vertical;line-height:1.4}
+.pill{display:flex;align-items:center;gap:2px;padding:3px 8px;border-radius:40px;background:var(--pan);border:1px solid var(--bd)}.pill button{background:none;border:0;color:var(--ac);font-size:1.1rem;width:34px;height:34px;border-radius:50%;cursor:pointer}.pill button:hover{background:rgba(255,255,255,.12)}.pill img{width:46px;height:46px;object-fit:contain}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
+.tab,.sg{border:1px solid var(--bd);border-radius:18px;padding:16px 8px;font:700 1rem system-ui;color:var(--ink);cursor:pointer;background:var(--pan);transition:.2s}
+.tab span{display:block;font-size:1.7rem}
+.tab.on,.sg.on{background:var(--ac);color:#161616;transform:translateY(-2px)}
+.sg{padding:10px 14px;border-radius:30px;font-size:.9rem}
+.card{background:var(--pan);border:1px solid var(--bd);border-radius:20px;padding:24px;box-shadow:0 10px 30px rgba(0,0,0,.35);display:none}
+.card.on{display:block}
+h2{font-size:1.15rem;margin-bottom:4px;color:var(--ac)}.lead{opacity:.8;font-size:.9rem;margin-bottom:12px}
+label{display:block;font-weight:700;font-size:.85rem;margin:14px 0 4px}
+input,select,textarea{width:100%;padding:12px 14px;border:2px solid var(--bd);border-radius:12px;font:inherit;color:var(--ink);background:color-mix(in srgb,var(--bg) 50%,#000)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--ac)}
+input[type=range]{padding:0;accent-color:var(--ac)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.drop{margin-top:14px;border:3px dashed var(--bd);background:color-mix(in srgb,var(--ac) 8%,transparent);border-radius:18px;padding:34px 16px;text-align:center;cursor:pointer;transition:.2s}
+.drop:hover,.drop.on{background:color-mix(in srgb,var(--ac) 22%,transparent)}
+.btn{display:inline-block;border:0;border-radius:30px;padding:13px 26px;font:700 1rem system-ui;color:#161616;background:var(--ac);cursor:pointer;transition:.2s}
+.btn:hover{filter:brightness(1.1);transform:translateY(-2px)}.btn:disabled{opacity:.5;cursor:default;transform:none}
+.btn.s{padding:8px 16px;font-size:.85rem;background:transparent;color:var(--ac);border:1px solid var(--ac)}
+.prev{display:grid;grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:10px;margin-top:14px}
+.prev div{position:relative;aspect-ratio:1;border-radius:12px;overflow:hidden;background:#000}
+.prev img,.prev video{width:100%;height:100%;object-fit:cover}
+.prev button{position:absolute;top:5px;border:0;border-radius:50%;width:26px;height:26px;cursor:pointer;background:rgba(255,255,255,.92)}
+.prev .x{right:5px}.prev .st{left:5px}.prev .st.on{background:#ffd76a}
+.bar{height:10px;border-radius:6px;background:var(--bd);overflow:hidden;margin-top:12px;display:none}.bar i{display:block;height:100%;width:0;background:var(--ac);transition:width .2s}
+.msg{font-size:.9rem;margin-top:8px;min-height:1.3em}
+.item{display:grid;grid-template-columns:2fr 1.3fr 1.3fr auto;gap:10px;align-items:end;padding:12px 0;border-top:1px solid var(--bd)}
+.item:first-of-type{border-top:0}
+h3{font-size:1rem;margin:18px 0 4px}
+.foot{position:fixed;left:0;right:0;bottom:0;padding:14px 16px calc(14px + env(safe-area-inset-bottom));background:color-mix(in srgb,var(--bg) 85%,#000);border-top:1px solid var(--bd);display:flex;gap:14px;align-items:center;justify-content:center;flex-wrap:wrap;z-index:5}
+.ok{background:color-mix(in srgb,var(--ac) 20%,var(--bg));border:1px solid var(--bd);padding:14px 18px;border-radius:14px;margin:18px auto 0;max-width:820px;display:none}
+ol{padding-left:20px}
+.modal{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,.8);display:none;overflow:auto;padding:16px}.modal.on{display:block}
+.mb{max-width:640px;margin:0 auto;background:var(--bg);border:1px solid var(--bd);border-radius:20px;padding:22px}
+.seg{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.fr{width:100%;overflow:hidden;border-radius:12px;background:#000;border:2px solid var(--ac);aspect-ratio:16/10}
+.fr img{width:100%;height:100%;object-fit:cover;object-position:var(--ox,50%) var(--oy,25%);transform:scale(var(--z,1));transform-origin:var(--ox,50%) var(--oy,25%);cursor:grab;user-select:none;touch-action:none;-webkit-user-drag:none}
+@media(max-width:640px){.row{grid-template-columns:1fr}.item{grid-template-columns:1fr 1fr}.tab{font-size:.85rem}}
+</style>
+<script>
+const PAL=[['#2a1810','#e6d9d3','#dfb95c'],['#2b003e','#fff27a','#ff4fa3'],['#1a1a3a','#ff8cc6','#c38af0'],['#313e2a','#efead0','#d2a74c'],['#1f4a49','#f3dc9b','#ff9272'],['#573d28','#e3dcc6','#d9b98a'],['#1a3465','#efebd6','#ff5a42']];
+function applyTh(i){const p=PAL[i]||PAL[0],s=document.documentElement.style;s.setProperty('--bg',p[0]);s.setProperty('--ink',p[1]);s.setProperty('--ac',p[2]);try{localStorage.setItem('currentTheme',i)}catch(e){}}
+try{applyTh(parseInt(localStorage.getItem('currentTheme'))||0)}catch(e){}
+</script>
+</head>
+<body>
+<div class="w">
+  <div class="top"><h1>🎛️ Admin</h1><div><span class="pill"><button id="thp" aria-label="Thème précédent">&#10094;</button><img id="thi" alt=""><button id="thn" aria-label="Thème suivant">&#10095;</button></span> <a href="index.html">← Retour au site</a></div></div>
+
+  <div class="ok" id="draft">✏️ <b>Modifications pas encore publiées.</b> Téléchargez le pack et envoyez-le sur GitHub. <button class="btn s" id="undo" style="margin-left:8px">Annuler mes modifications</button></div>
+  <div class="tabs">
+    <button class="tab on" data-t="p"><span>📷</span>Photos</button>
+    <button class="tab" data-t="v"><span>🎬</span>Vidéos</button>
+    <button class="tab" data-t="c"><span>🗂️</span>Modifier</button>
+  </div>
+
+  <!-- PHOTOS -->
+  <div class="card on" id="p">
+    <h2>Ajouter des photos</h2><p class="lead">Glissez vos photos, donnez un nom à l'album : c'est tout.</p>
+    <label for="target">Dans quel album ?</label><select id="target"></select>
+    <div id="newbox">
+      <div class="row">
+        <div><label for="title">Nom de l'album</label><input id="title" placeholder="Ex. Tournoi de printemps"></div>
+        <div><label for="date">Date</label><input id="date" placeholder="Ex. 12 mars 2027"></div>
+      </div>
+      <label for="cat">Catégorie</label><input id="cat" list="cats" placeholder="Ex. Événements, Sport…"><datalist id="cats"></datalist>
+    </div>
+    <div class="drop" id="drop">📷 <b>Glissez vos photos ici</b><br><small>ou cliquez pour les choisir</small></div>
+    <input type="file" id="file" accept="image/*" multiple hidden>
+    <div class="bar" id="bar"><i></i></div><p class="msg" id="msg"></p>
+    <div class="prev" id="prev"></div>
+  </div>
+
+  <!-- VIDEOS -->
+  <div class="card" id="v">
+    <h2>Ajouter une vidéo</h2><p class="lead">Choisissez votre vidéo : le site en découpe un court extrait (3 à 5 s) qui tourne en boucle sur l'accueil. Au clic, les visiteurs ouvrent votre lien.</p>
+    <div class="drop" id="vdrop">🎬 <b>Glissez votre vidéo ici</b><br><small>ou cliquez pour la choisir</small></div>
+    <input type="file" id="vfile" accept="video/*" hidden>
+    <div id="vform" style="display:none">
+      <video id="vsrc" controls muted playsinline style="width:100%;border-radius:14px;margin-top:14px;max-height:260px;background:#000"></video>
+      <div class="row">
+        <div><label for="vstart">Début de l'extrait (seconde)</label><input id="vstart" type="number" min="0" value="0"></div>
+        <div><label for="vdur">Durée de l'extrait</label><select id="vdur"><option>3</option><option selected>4</option><option>5</option></select></div>
+      </div>
+      <p class="lead" style="margin-top:6px">Astuce : mettez la vidéo en pause sur le bon moment et cliquez « Début = ici ».
+        <button class="btn s" id="vhere" type="button">Début = ici</button></p>
+      <div class="row">
+        <div><label for="vtitle">Titre</label><input id="vtitle" placeholder="Ex. Aftermovie du tournoi"></div>
+        <div><label for="vsub">Sous-titre</label><input id="vsub" placeholder="Ex. Club de badminton · 2026"></div>
+      </div>
+      <label for="vdesc">Description (facultatif, une ligne = un paragraphe)</label><textarea id="vdesc" rows="3"></textarea>
+      <label for="vlink">Lien de la vidéo complète (Vimeo, YouTube…)</label><input id="vlink" type="url" placeholder="https://vimeo.com/123456789">
+      <p style="margin-top:16px"><button class="btn m" id="vadd">✂️ Créer l'aperçu et ajouter</button></p>
+      <div class="bar" id="vbar"><i></i></div>
+    </div>
+    <p class="msg" id="vmsg"></p>
+    <div class="prev" id="vprev"></div>
+  </div>
+
+  <!-- MODIFIER -->
+  <div class="card" id="c">
+    <h2>Mes contenus</h2><p class="lead">Changez un nom, une date, un lien, ou retirez un élément du site.</p>
+    <h3>📷 Albums photo</h3><div id="albums"></div>
+    <h3>🎬 Vidéos</h3><div id="videos"></div>
+  </div>
+</div>
+
+<div class="modal" id="ed"><div class="mb">
+  <div class="top"><h2 id="edt">Placer les images</h2><button class="btn s" id="edx">Fermer ✕</button></div>
+  <div class="seg"><button class="sg on" data-m="t">Vignette de l'accueil</button><button class="sg" data-m="c">Grande image du haut</button></div>
+  <div class="fr" id="fr"><img id="fimg" alt=""></div>
+  <label>Zoom<input type="range" id="fz" min="1" max="2.5" step="0.05" value="1"></label>
+  <p class="lead" style="margin-top:10px">Glissez l'image dans le cadre pour la placer comme vous voulez. Cliquez une autre photo pour la choisir (✕ = la retirer de l'album).</p>
+  <div class="prev" id="estrip"></div>
+</div></div>
+<div class="ok" id="ok"><b>Pack téléchargé 🎉</b> Il reste 3 étapes :
+  <ol><li>Décompressez-le <b>dans le dossier de votre site</b> (remplacez <code>galleries.js</code> si demandé).</li>
+  <li>Envoyez les nouveaux fichiers sur GitHub.</li><li>Attendez 1 à 2 minutes : c'est en ligne.</li></ol></div>
+
+<div class="foot"><span id="count">Rien en attente</span><button class="btn m" id="go">⬇️ Télécharger le pack</button></div>
+
+<script src="galleries.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const albums = JSON.parse(JSON.stringify(window.GALLERIES || [])), videos = JSON.parse(JSON.stringify(window.VIDEOS || []));
+const KEY = 'adminDraft', pub = JSON.stringify([window.GALLERIES || [], window.VIDEOS || []]);
+try { const dr = JSON.parse(localStorage.getItem(KEY)); if (dr && JSON.stringify(dr) !== pub) { albums.splice(0, albums.length, ...dr[0]); videos.splice(0, videos.length, ...dr[1]); $('draft').style.display = 'block'; } } catch (e) {}
+setInterval(() => { try { localStorage.setItem(KEY, JSON.stringify([albums, videos])); } catch (e) {} }, 1500);
+$('undo').onclick = () => { if (confirm('Annuler toutes vos modifications non publiées ?')) { localStorage.removeItem(KEY); location.reload(); } };
+if (location.protocol.startsWith('http')) fetch('galleries.js', { cache: 'no-cache' }).then(r => r.text()).then(t => { (0, eval)(t); if (JSON.stringify([window.GALLERIES, window.VIDEOS]) !== pub && !sessionStorage.gf) { sessionStorage.gf = 1; location.reload(); } else sessionStorage.removeItem('gf'); }).catch(() => {});
+let pending = [], cover = null, newVideos = [], replaceId = null, ea = null, em = 't';
+const mb = n => (n / 1048576).toFixed(1).replace('.', ',') + ' Mo';
+const slug = s => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^A-Za-z0-9_-]+/g, '-').replace(/^-+|-+$/g, '');
+const q = s => String(s).replace(/"/g, '&quot;');
+const unique = (base, used) => { let n = base || 'x', i = 2; while (used.has(n)) n = `${base}-${i++}`; return n; };
+
+/* ----- onglets ----- */
+document.querySelector('.tabs').onclick = e => { const b = e.target.closest('.tab'); if (!b) return;
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('on', t === b));
+  document.querySelectorAll('.card').forEach(c => c.classList.toggle('on', c.id === b.dataset.t)); };
+
+/* ----- affichage ----- */
+function refresh() {
+  const cur = $('target').value || '__new';
+  $('target').innerHTML = '<option value="__new">✨ Nouvel album</option>' + albums.map(a => `<option value="${a.id}">${a.title} (${a.photos.length})</option>`).join('');
+  $('target').value = albums.some(a => a.id === cur) ? cur : '__new';
+  $('newbox').style.display = $('target').value === '__new' ? '' : 'none';
+  $('cats').innerHTML = [...new Set(albums.map(a => a.cat).filter(Boolean))].map(c => `<option value="${q(c)}">`).join('');
+  $('prev').innerHTML = pending.map((p, i) => `<div><img src="${p.url}" alt=""><button class="x" data-rm="${i}" title="Retirer">✕</button>${$('target').value === '__new' ? `<button class="st ${p.name === cover ? 'on' : ''}" data-cv="${i}" title="Choisir comme couverture">⭐</button>` : ''}</div>`).join('');
+  $('vprev').innerHTML = newVideos.map((v, i) => `<div><video src="${v.url}" muted loop autoplay playsinline></video><button class="x" data-vrm="${i}" title="Retirer">✕</button></div>`).join('');
+  const item = (arr, kind) => arr.map((a, i) => `<div class="item">
+    <div><label>Titre</label><input data-k="${kind}" data-i="${i}" data-f="title" value="${q(a.title)}"></div>
+    ${kind === 'a' ? `<div><label>Date</label><input data-k="a" data-i="${i}" data-f="date" value="${q(a.date)}"></div><div><label>Catégorie</label><input data-k="a" data-i="${i}" data-f="cat" list="cats" value="${q(a.cat || '')}"></div>`
+      : `<div><label>Sous-titre</label><input data-k="v" data-i="${i}" data-f="sub" value="${q(a.sub || '')}"></div><div><label>Lien</label><input data-k="v" data-i="${i}" data-f="link" value="${q(a.link)}"></div>`}
+    <div style="display:flex;gap:6px;flex-wrap:wrap">${kind === 'a' ? `<button class="btn s" data-ed="${i}">🖼️ Images</button>` : `<button class="btn s" data-rp="${i}">🎞️ Aperçu</button>`}<button class="btn s" data-del="${kind}${i}">Retirer</button></div>${kind === 'v' ? `<div style="grid-column:1/-1"><label>Description</label><textarea rows="3" data-k="v" data-i="${i}" data-f="desc">${(a.desc || '').replace(/</g, '&lt;')}</textarea></div>` : ''}</div>`).join('') || '<p class="lead">Rien pour l\'instant.</p>';
+  $('albums').innerHTML = item(albums, 'a'); $('videos').innerHTML = item(videos, 'v');
+  const n = pending.length, m = newVideos.length;
+  $('count').textContent = n || m ? `En attente : ${n} photo(s), ${m} vidéo(s)` : 'Rien en attente';
+}
+$('target').onchange = refresh;
+$('c').oninput = e => { const t = e.target; if (t.dataset.f) (t.dataset.k === 'a' ? albums : videos)[t.dataset.i][t.dataset.f] = t.value; };
+$('c').onclick = e => { const D = e.target.dataset;
+  if (D.ed !== undefined) { ea = albums[D.ed]; em = 't'; document.querySelectorAll('.sg').forEach(s => s.classList.toggle('on', s.dataset.m === 't')); $('ed').classList.add('on'); showEd(); return; }
+  if (D.rp !== undefined) { replaceId = videos[D.rp].id; document.querySelector('[data-t=v]').click(); $('vmsg').textContent = `Remplacer l'aperçu de « ${videos[D.rp].title} » : choisissez sa vidéo d'origine.`; return; }
+  const d = D.del; if (!d) return; const arr = d[0] === 'a' ? albums : videos, i = +d.slice(1);
+  if (confirm(`Retirer « ${arr[i].title} » du site ?\n(Vos fichiers ne sont pas supprimés.)`)) { arr.splice(i, 1); refresh(); } };
+$('prev').onclick = e => { const t = e.target;
+  if (t.dataset.rm !== undefined) { URL.revokeObjectURL(pending[t.dataset.rm].url); pending.splice(t.dataset.rm, 1); if (!pending.some(p => p.name === cover)) cover = pending[0] && pending[0].name; }
+  if (t.dataset.cv !== undefined) cover = pending[t.dataset.cv].name; refresh(); };
+$('vprev').onclick = e => { const i = e.target.dataset.vrm; if (i !== undefined) { URL.revokeObjectURL(newVideos[i].url); newVideos.splice(i, 1); refresh(); } };
+
+/* ----- photos : redimensionnement WebP dans le navigateur ----- */
+const webpOK = document.createElement('canvas').toDataURL('image/webp').startsWith('data:image/webp');
+if (!webpOK) $('msg').textContent = '⚠️ Utilisez Chrome, Edge ou Firefox (ce navigateur ne crée pas de WebP).';
+async function shrink(src, w0, h0, max, qu) {
+  const k = Math.min(1, max / Math.max(w0, h0)), w = Math.round(w0 * k), h = Math.round(h0 * k), c = document.createElement('canvas');
+  c.width = w; c.height = h; c.getContext('2d').drawImage(src, 0, 0, w, h);
+  return { w, h, blob: await new Promise(r => c.toBlob(r, 'image/webp', qu)) };
+}
+async function addPhotos(files) {
+  if (!webpOK) return; const list = [...files].filter(f => f.type.startsWith('image/')); $('bar').style.display = 'block';
+  for (let i = 0; i < list.length; i++) {
+    $('msg').textContent = `Photo ${i + 1} / ${list.length}…`; $('bar').firstChild.style.width = (i / list.length * 100) + '%';
+    try {
+      const b = await createImageBitmap(list[i], { imageOrientation: 'from-image' });
+      const th = await shrink(b, b.width, b.height, 900, .78), lg = await shrink(b, b.width, b.height, 2200, .8);
+      const name = unique(slug(list[i].name.replace(/\.[^.]+$/, '')), new Set([...pending.map(p => p.name), ...albums.flatMap(a => a.photos.map(p => p[0]))]));
+      pending.push({ name, orig: list[i].size, w: th.w, h: th.h, thumb: th.blob, large: lg.blob, url: URL.createObjectURL(th.blob) }); if (!cover) cover = name;
+    } catch (e) { $('msg').textContent = `« ${list[i].name} » illisible.`; }
+    await new Promise(r => setTimeout(r));
+  }
+  $('bar').firstChild.style.width = '100%'; setTimeout(() => ($('bar').style.display = 'none'), 600); { const o = pending.reduce((s, p) => s + p.orig, 0), n = pending.reduce((s, p) => s + p.thumb.size + p.large.size, 0); $('msg').textContent = `✅ ${pending.length} photo(s) converties en WebP : ${mb(o)} → ${mb(n)} (−${Math.max(0, Math.round((1 - n / o) * 100))} %)`; } refresh();
+}
+const dropOn = (el, input, fn) => { el.onclick = () => input.click(); input.onchange = e => { fn(e.target.files); e.target.value = ''; };
+  ['dragover', 'dragenter'].forEach(ev => el.addEventListener(ev, e => { e.preventDefault(); el.classList.add('on'); }));
+  ['dragleave', 'drop'].forEach(ev => el.addEventListener(ev, e => { e.preventDefault(); el.classList.remove('on'); }));
+  el.addEventListener('drop', e => fn(e.dataTransfer.files)); };
+dropOn($('drop'), $('file'), addPhotos);
+
+/* ----- vidéos : extrait de 3 à 5 s découpé dans le navigateur ----- */
+let vfile = null;
+dropOn($('vdrop'), $('vfile'), files => { const f = files[0]; if (!f || !f.type.startsWith('video/')) return;
+  vfile = f; $('vsrc').src = URL.createObjectURL(f); $('vform').style.display = 'block'; { const old = videos.find(v => v.id === replaceId); $('vtitle').value = old ? old.title : f.name.replace(/\.[^.]+$/, '').replace(/[_-]+/g, ' '); if (old) { $('vsub').value = old.sub || ''; $('vlink').value = old.link; $('vdesc').value = old.desc || ''; } } $('vdrop').style.display = 'none'; });
+$('vhere').onclick = () => { $('vstart').value = Math.floor($('vsrc').currentTime); };
+$('vadd').onclick = async () => {
+  const title = $('vtitle').value.trim(), link = $('vlink').value.trim();
+  if (!title || !/^https?:\/\//.test(link)) { alert('Ajoutez un titre et un lien complet (qui commence par https://).'); return; }
+  if (!window.MediaRecorder) { alert('Utilisez Chrome, Edge ou Firefox pour créer l\'aperçu.'); return; }
+  $('vadd').disabled = true; $('vbar').style.display = 'block'; $('vmsg').textContent = 'Création de l\'aperçu… gardez cet onglet visible.';
+  try {
+    const dur = +$('vdur').value, v = document.createElement('video'); v.muted = true; v.playsInline = true; v.src = URL.createObjectURL(vfile);
+    await new Promise((r, j) => { v.onloadedmetadata = r; v.onerror = j; });
+    const start = Math.min(+$('vstart').value || 0, Math.max(0, v.duration - dur)); v.currentTime = start; await new Promise(r => (v.onseeked = r));
+    const k = Math.min(1, 720 / v.videoWidth), w = Math.round(v.videoWidth * k / 2) * 2, h = Math.round(v.videoHeight * k / 2) * 2, c = document.createElement('canvas'), x = c.getContext('2d');
+    c.width = w; c.height = h; x.drawImage(v, 0, 0, w, h);
+    const poster = await new Promise(r => c.toBlob(r, 'image/webp', .8));
+    const mt = ['video/webm;codecs=vp9', 'video/webm;codecs=vp8', 'video/webm'].find(t => MediaRecorder.isTypeSupported(t));
+    const rec = new MediaRecorder(c.captureStream(25), { mimeType: mt, videoBitsPerSecond: 1500000 }), parts = []; rec.ondataavailable = e => e.data.size && parts.push(e.data);
+    const done = new Promise(r => (rec.onstop = r)); rec.start(); await v.play(); const t0 = performance.now();
+    await new Promise(res => { (function f() { x.drawImage(v, 0, 0, w, h); const p = (performance.now() - t0) / (dur * 1000); $('vbar').firstChild.style.width = Math.min(100, p * 100) + '%';
+      if (p >= 1) { v.pause(); rec.stop(); res(); } else requestAnimationFrame(f); })(); });
+    await done; const clip = new Blob(parts, { type: 'video/webm' });
+    const id = replaceId || unique(slug(title).toLowerCase() || 'video', new Set([...videos.map(a => a.id), ...newVideos.map(a => a.id)]));
+    newVideos.push({ replace: !!replaceId, id, title, desc: $('vdesc').value.trim(), sub: $('vsub').value.trim(), link, clip, poster, url: URL.createObjectURL(clip) });
+    $('vmsg').textContent = `✅ « ${title} » ajoutée (aperçu ${(clip.size / 1048576).toFixed(1)} Mo).`;
+    $('vform').style.display = 'none'; $('vdrop').style.display = ''; $('vtitle').value = $('vsub').value = $('vlink').value = $('vdesc').value = ''; vfile = null; replaceId = null;
+  } catch (e) { $('vmsg').textContent = 'Impossible de créer l\'aperçu avec cette vidéo.'; }
+  $('vadd').disabled = false; $('vbar').style.display = 'none'; refresh();
+};
+
+/* ----- zip (sans bibliothèque) ----- */
+const T = (() => { const t = []; for (let n = 0; n < 256; n++) { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; t[n] = c >>> 0; } return t; })();
+const crc = u => { let c = -1; for (let i = 0; i < u.length; i++) c = T[(c ^ u[i]) & 255] ^ (c >>> 8); return (c ^ -1) >>> 0; };
+function zip(files) {
+  const enc = new TextEncoder(), parts = [], cd = []; let off = 0;
+  for (const f of files) {
+    const nm = enc.encode(f.name), c = crc(f.data), z = f.data.length;
+    const h = new DataView(new ArrayBuffer(30)); h.setUint32(0, 0x04034b50, true); h.setUint16(4, 20, true); h.setUint16(6, 0x0800, true);
+    h.setUint16(12, 0x21, true); h.setUint32(14, c, true); h.setUint32(18, z, true); h.setUint32(22, z, true); h.setUint16(26, nm.length, true); parts.push(h.buffer, nm, f.data);
+    const d = new DataView(new ArrayBuffer(46)); d.setUint32(0, 0x02014b50, true); d.setUint16(4, 20, true); d.setUint16(6, 20, true); d.setUint16(8, 0x0800, true);
+    d.setUint16(14, 0x21, true); d.setUint32(16, c, true); d.setUint32(20, z, true); d.setUint32(24, z, true); d.setUint16(28, nm.length, true); d.setUint32(42, off, true); cd.push(d.buffer, nm); off += 30 + nm.length + z;
+  }
+  const size = cd.reduce((s, b) => s + b.byteLength, 0), e = new DataView(new ArrayBuffer(22));
+  e.setUint32(0, 0x06054b50, true); e.setUint16(8, files.length, true); e.setUint16(10, files.length, true); e.setUint32(12, size, true); e.setUint32(16, off, true);
+  return new Blob([...parts, ...cd, e.buffer], { type: 'application/zip' });
+}
+const bytes = async b => new Uint8Array(await b.arrayBuffer());
+
+$('go').onclick = async () => {
+  const files = [], enc = new TextEncoder(), tg = $('target').value;
+  if (pending.length) {
+    let a;
+    if (tg === '__new') {
+      const title = $('title').value.trim(); if (!title) { alert('Donnez un nom au nouvel album (onglet Photos).'); return; }
+      const id = unique(slug(title).toLowerCase() || 'album', new Set(albums.map(x => x.id)));
+      a = { id, title, date: $('date').value.trim(), cat: $('cat').value.trim(), folder: 'Photo_' + id, cover: cover || pending[0].name, photos: [] }; albums.push(a);
+    } else a = albums.find(x => x.id === tg);
+    for (const p of pending) { files.push({ name: `${a.folder}/thumb/${p.name}.webp`, data: await bytes(p.thumb) }, { name: `${a.folder}/large/${p.name}.webp`, data: await bytes(p.large) }); a.photos.push([p.name, p.w, p.h]); }
+    a.photos.sort((x, y) => x[0].localeCompare(y[0]));
+    pending.forEach(p => URL.revokeObjectURL(p.url)); pending = []; cover = null; $('title').value = $('date').value = $('cat').value = '';
+  }
+  for (const v of newVideos) { const fo = 'Video_' + v.id;
+    files.push({ name: `${fo}/cover.webm`, data: await bytes(v.clip) }, { name: `${fo}/poster.webp`, data: await bytes(v.poster) });
+    const nv = { id: v.id, title: v.title, sub: v.sub, preview: `${fo}/cover.webm`, poster: `${fo}/poster.webp`, link: v.link, desc: v.desc }, k = videos.findIndex(x => x.id === v.id); if (v.replace && k >= 0) videos[k] = Object.assign({}, videos[k], nv); else videos.push(nv); URL.revokeObjectURL(v.url); }
+  newVideos = [];
+  files.push({ name: 'galleries.js', data: enc.encode('window.GALLERIES = ' + JSON.stringify(albums, null, 1) + ';\nwindow.VIDEOS = ' + JSON.stringify(videos, null, 1) + ';\n') });
+  const url = URL.createObjectURL(zip(files)), l = document.createElement('a'); l.href = url; l.download = 'pack-portfolio.zip'; l.click(); setTimeout(() => URL.revokeObjectURL(url), 5000);
+  $('ok').style.display = 'block'; $('ok').scrollIntoView({ behavior: 'smooth' }); $('msg').textContent = ''; refresh();
+};
+/* ----- placement des images (vignette / grande image) ----- */
+const setVars = (im, p) => { im.style.setProperty('--ox', p[0] + '%'); im.style.setProperty('--oy', p[1] + '%'); im.style.setProperty('--z', p[2]); };
+const posOf = (a, m) => (m === 't' ? a.tpos || [50, 25, 1] : a.cpos || [50, 40, 1]);
+function showEd() {
+  const a = ea, p = posOf(a, em), name = em === 't' ? a.thumb || a.cover : a.cover;
+  $('edt').textContent = a.title; $('fr').style.aspectRatio = em === 't' ? '16/10' : '2/1';
+  const im = $('fimg'); im.src = `${a.folder}/large/${name}.webp`; setVars(im, p); $('fz').value = p[2];
+  $('estrip').innerHTML = a.photos.map(([n], i) => `<div><img src="${a.folder}/thumb/${n}.webp" data-pick="${n}" alt="" style="cursor:pointer;${n === name ? 'outline:3px solid var(--ac);outline-offset:-3px' : ''}"><button class="x" data-rmp="${i}" title="Retirer de l'album">✕</button></div>`).join('');
+}
+document.querySelector('.seg').onclick = e => { const b = e.target.closest('.sg'); if (!b) return; em = b.dataset.m; document.querySelectorAll('.sg').forEach(s => s.classList.toggle('on', s === b)); showEd(); };
+$('edx').onclick = () => { $('ed').classList.remove('on'); refresh(); };
+$('estrip').onclick = e => { const t = e.target, a = ea;
+  if (t.dataset.pick) { if (em === 't') a.thumb = t.dataset.pick; else a.cover = t.dataset.pick; if (em === 't') a.tpos = [50, 25, 1]; else a.cpos = [50, 40, 1]; showEd(); }
+  if (t.dataset.rmp !== undefined) { if (a.photos.length < 2) return alert('Un album doit garder au moins une photo.');
+    const n = a.photos[t.dataset.rmp][0]; a.photos.splice(t.dataset.rmp, 1); if (a.cover === n) a.cover = a.photos[0][0]; if (a.thumb === n) delete a.thumb; showEd(); } };
+let drag = null;
+$('fr').onpointerdown = e => { drag = { x: e.clientX, y: e.clientY, p: [...posOf(ea, em)] }; $('fr').setPointerCapture(e.pointerId); };
+$('fr').onpointermove = e => { if (!drag) return; const im = $('fimg'), fw = $('fr').clientWidth, fh = $('fr').clientHeight, s = Math.max(fw / im.naturalWidth, fh / im.naturalHeight),
+  ox = im.naturalWidth * s - fw, oy = im.naturalHeight * s - fh, p = [...drag.p];
+  if (ox > 1) p[0] = Math.min(100, Math.max(0, drag.p[0] - (e.clientX - drag.x) / ox * 100)); if (oy > 1) p[1] = Math.min(100, Math.max(0, drag.p[1] - (e.clientY - drag.y) / oy * 100));
+  if (em === 't') ea.tpos = p; else ea.cpos = p; setVars(im, p); };
+$('fr').onpointerup = $('fr').onpointercancel = () => (drag = null);
+$('fz').oninput = e => { const p = [...posOf(ea, em)]; p[2] = +e.target.value; if (em === 't') ea.tpos = p; else ea.cpos = p; setVars($('fimg'), p); };
+const NAMES = ['Jazz café', 'Rétro néon', 'Rêverie', 'Épique', 'Enfance', 'Classique', 'Sport'];
+let thI = 0; try { thI = parseInt(localStorage.getItem('currentTheme')) || 0; } catch (e) {}
+const showT = () => { $('thi').src = `PNG_page_acceuil/icon${thI}.webp`; $('thi').title = NAMES[thI]; };
+$('thp').onclick = () => { thI = (thI + 6) % 7; applyTh(thI); showT(); }; $('thn').onclick = () => { thI = (thI + 1) % 7; applyTh(thI); showT(); }; showT();
+refresh();
+</script>
+</body>
+</html>

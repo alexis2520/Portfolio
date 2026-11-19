@@ -1,0 +1,46 @@
+window.GALLERIES = [{"id": "bazoges-se-marie", "title": "Bazoges se marie", "date": "28 août 2026", "cat": "Événements", "folder": "Photo_BSM", "cover": "P1027047", "photos": [["P1016058", 507, 900], ["P1016263", 507, 900], ["P1016318", 507, 900], ["P1016552", 507, 900], ["P1016604", 507, 900], ["P1026935", 675, 900], ["P1027047", 900, 676], ["P1027109", 675, 900], ["P1027293", 675, 900], ["P1037831", 507, 900], ["P1038410", 507, 900], ["P1038422", 507, 900], ["P1038483", 507, 900], ["P1049168", 676, 900], ["P1049514", 507, 900], ["P1049533", 507, 900], ["P1049609", 507, 900], ["P1049666", 675, 900], ["P1049782", 507, 900], ["P1061043", 507, 900], ["P1061126", 507, 900], ["P1061586", 507, 900], ["P1072459", 507, 900], ["P1072462", 507, 900], ["P1072556", 507, 900], ["P1072669", 507, 900]], "link": {"label": "Voir la vidéo de l'événement", "href": "video.html?v=retour-en-image-evenement"}}, {"id": "la-mere-lapic", "title": "La mère Lapic", "date": "19 septembre 2026", "cat": "Événements", "folder": "Photo_LAP", "cover": "P1094267", "photos": [["P1082960", 900, 676], ["P1082963", 676, 900], ["P1082972", 900, 676], ["P1082978", 900, 676], ["P1083030", 900, 676], ["P1083039", 900, 676], ["P1083043", 676, 900], ["P1083115", 676, 900], ["P1083196", 676, 900], ["P1083519", 676, 900], ["P1083567", 676, 900], ["P1083601", 676, 900], ["P1083674", 676, 900], ["P1083697", 676, 900], ["P1083715", 676, 900], ["P1083773", 676, 900], ["P1083866", 676, 900], ["P1083897", 676, 900], ["P1094106", 676, 900], ["P1094115", 900, 676], ["P1094122", 676, 900], ["P1094267", 900, 676]]}, {"id": "roi-de-l-oiseau", "title": "Roi de l'oiseau", "date": "Année 2026", "cat": "Événements", "folder": "Photo_OIS", "cover": "P1094466", "photos": [["P1094314", 676, 900], ["P1094384", 676, 900], ["P1094387_01", 676, 900], ["P1094427_01", 676, 900], ["P1094445", 676, 900], ["P1094451", 676, 900], ["P1094466", 506, 900], ["P1094517", 676, 900], ["P1094544", 676, 900], ["P1094546", 676, 900], ["P1094560_01", 676, 900], ["P1094568_01", 676, 900], ["P1094594_01", 676, 900], ["P1094599_01", 676, 900], ["P1094664_01", 676, 900], ["P1094668_01", 676, 900], ["P1094682", 676, 900], ["P1094735", 676, 900], ["P1094746", 676, 900], ["P1094748_01", 676, 900], ["P1094760_01", 676, 900], ["P1094780", 676, 900], ["P1094796", 676, 900], ["P1094806", 676, 900], ["P1094823", 676, 900], ["P1094833", 676, 900], ["P1094909", 676, 900], ["P1094912", 676, 900], ["P1094917", 676, 900], ["P1094971_01", 676, 900], ["P1095050_01", 676, 900], ["P1095089", 676, 900], ["P1095090", 676, 900], ["P1095108", 676, 900], ["P1095120", 676, 900], ["P1095125", 676, 900]]}, {"id": "badminton-haute-loire", "title": "Badminton en Haute-Loire", "date": "Année 2026", "cat": "Sport", "folder": "Photo_BAD", "cover": "P1014611", "photos": [["P1002016", 507, 900], ["P1002109", 507, 900], ["P1002162", 507, 900], ["P1002244", 507, 900], ["P1002391", 507, 900], ["P1002501", 507, 900], ["P1014484", 676, 900], ["P1014485", 676, 900], ["P1014522", 676, 900], ["P1014567", 676, 900], ["P1014587", 676, 900], ["P1014588", 676, 900], ["P1014598", 676, 900], ["P1014611", 676, 900], ["P1014625", 676, 900], ["P1014626", 676, 900]]}, {"id": "badminton-brives-charensac", "title": "Badminton à Brives-Charensac", "date": "4 octobre 2026", "cat": "Sport", "folder": "Photo_BRI", "cover": "P1095227", "photos": [["P1095131", 676, 900], ["P1095134", 676, 900], ["P1095138", 676, 900], ["P1095142", 676, 900], ["P1095145", 676, 900], ["P1095149", 676, 900], ["P1095173", 676, 900], ["P1095177", 676, 900], ["P1095178", 676, 900], ["P1095218", 676, 900], ["P1095226", 676, 900], ["P1095227", 676, 900], ["P1095245", 676, 900], ["P1095249", 676, 900], ["P1095256", 676, 900], ["P1095268", 676, 900], ["P1095286", 676, 900], ["P1095296", 676, 900], ["P1095302", 676, 900], ["P1095309", 676, 900], ["P1095319", 676, 900], ["P1095339", 676, 900], ["P1095343", 676, 900], ["P1095354", 676, 900], ["P1095368", 676, 900], ["P1095375", 676, 900], ["P1095380", 601, 900], ["P1095397", 676, 900], ["P1095402", 676, 900], ["P1095432", 676, 900], ["P1095436", 676, 900], ["P1095441", 676, 900], ["P1095442", 676, 900], ["P1095453", 676, 900], ["P1095467", 676, 900], ["P1095478", 676, 900], ["P1095499", 676, 900], ["P1095505", 676, 900], ["P1095514", 676, 900], ["P1095518", 676, 900], ["P1095543", 676, 900], ["P1095545", 676, 900], ["P1095549", 676, 900], ["P1095561", 676, 900], ["P1095566", 676, 900], ["P1095568", 676, 900], ["P1095569", 676, 900], ["P1095573", 676, 900], ["P1095609", 676, 900], ["P1095623", 676, 900], ["P1095629", 676, 900], ["P1095633", 676, 900], ["P1095640", 676, 900], ["P1095651", 676, 900], ["P1095652", 676, 900], ["P1095660", 676, 900], ["P1095663", 676, 900], ["P1095688", 676, 900]]}];
+window.VIDEOS = [
+ {
+  "id": "retour-en-image-evenement",
+  "title": "Retour en image évènement",
+  "sub": "Bazoges se marie · 28 août 2026",
+  "preview": "MON_EXTRAIT.mp4",
+  "link": "https://vimeo.com/1224378927",
+  "portrait": true,
+  "desc": "Présence en fin d’après-midi et durant toute la soirée pour le Comité des fêtes de Bazoges-en-Paillers.\nObjectif : communiquer sur l’événement une fois celui-ci terminé.\nMon rôle était de filmer l’événement, puis de réaliser le montage afin de le publier ensuite sur les réseaux sociaux.",
+  "btn": {
+   "label": "Voir la galerie photo",
+   "href": "galerie.html?g=bazoges-se-marie"
+  }
+ },
+ {
+  "id": "bande-annonce-festival",
+  "title": "Bande annonce festival",
+  "sub": "Festival ciné/théâtre 2025",
+  "preview": "MON_EXTRAIT2.mp4",
+  "link": "https://vimeo.com/1224391317",
+  "desc": "Au lycée Charles Péguy, à Gorges, se préparait la troisième édition du festival ciné/théâtre, lors duquel les élèves pouvaient présenter un court-métrage et/ou une pièce de théâtre sur un thème imposé.\nÉtudiant au lycée et après avoir découvert le festival Premiers Plans à Angers, j’ai décidé de créer une bande-annonce dynamique, inspirée de l’identité et du style de ce festival.\nNous étions deux sur le projet : je me suis occupé du montage, tandis que l’autre personne s’est chargée de la musique.\nNous avons discuté du choix musical et sommes tombés d’accord sur une musique dynamique et épique, avec une certaine part de mystère, afin d’accrocher le spectateur et d’éveiller sa curiosité.\nPour le montage, j’ai repris les scènes les plus marquantes des courts-métrages des années précédentes afin de montrer que le maître mot du festival était la créativité. J’ai ensuite construit le montage en suivant le rythme de la musique, en ne laissant pas les plans trop longtemps à l’écran afin de dynamiser la vidéo.\nJe tenais également à ne pas réaliser une simple succession de plans. J’ai donc ajouté plusieurs effets, notamment du picture-in-picture et du split-screen, afin de maintenir l’attention du spectateur et d’apporter davantage de rythme au montage.\nLa vidéo se termine par un défilement des titres des anciens courts-métrages, en référence aux élèves ayant déjà participé au festival."
+ },
+ {
+  "id": "decouverte-du-college",
+  "title": "Découverte du collège",
+  "sub": "Collège Sainte Marie, Chavagnes-en-Paillers",
+  "preview": "MON_EXTRAIT3.mp4",
+  "link": "https://vimeo.com/1224417203",
+  "desc": "C’est un projet réalisé avec la volonté de m’exercer tout en faisant la promotion du collège dans lequel j’avais étudié.\nAprès un entretien avec la directrice, celle-ci m’a proposé de réaliser non pas une, mais trois vidéos différentes, chacune présentant un des services proposés par l’établissement.\nÉtant donné que j’y avais fait mes études, je connaissais déjà le bâtiment. Le véritable défi était donc de réussir à bien le mettre en valeur et à donner envie aux futurs collégiens de venir dans cet établissement.",
+  "parts": [
+   {
+    "t": "Prép'avenir",
+    "link": "https://vimeo.com/1224417203"
+   },
+   {
+    "t": "Cantine",
+    "link": "https://vimeo.com/1224417202"
+   },
+   {
+    "t": "Ateliers de Marie",
+    "link": "https://vimeo.com/1224417201"
+   }
+  ]
+ }
+];
